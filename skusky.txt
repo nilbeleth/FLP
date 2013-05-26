@@ -1,0 +1,210 @@
+--------------------------------------------
+------------------- 2009 -------------------
+--------------------------------------------
+  
+  HASKELL
+    1) V Haskellu nadefinovat typ pro Ord coords => QuadTree coords data (kvaternarni vyhledavaci strom pro 2D prostor), 
+      operaci insert (vlozeni hodnoty do stromu na dane souradnice; v pripade, ze dany uzel uz existuje, tak prepsat data), 
+      ktera vraci novy strom a operaci search, ktera vyhledava data na danych souradnicich a vraci Maybe data. (10b)
+    2) V Haskellu napsat funkci stat :: FilePath -> IO(), ktera na standardni vystup vytiskne histogram zastoupeni 
+      jednotlivych znaku (0-255, znaky se neuvadi, pouze "cary", co sloupec, to radek). Sirka okna je omezena, takze 
+      velikost histogramu bude umerna sirce okna. (15b)
+  PROLOG
+    3) V Prologu nadefinovat predikat foldl(Functor, ValueForEmptyList, ListOfValues, Result), ktery nad seznamem 
+      ListOfValues provede operaci foldl. (8b)
+    4) Vytvorte a popise reprezentaci lambda vyrazu v Prologu a vytvorte dva predikaty: freeVars, ktery "vraci" 
+      mnozinu volnych promennych v zadanem vyrazu (tj kazda promenna se tam vyskytuje nejvyse jednou) a predikat 
+      substitute, ktery na zadanem vyrazu provede zadanou substituci (pokud substituci nelze provest, pak predikat 
+      selhava). (20b)
+    5) V Prologu nadefinujte predikat sublist(List, SubList), ktery je pravdivy, pokud SubList je podseznamen 
+      seznamu List (sublist([1,2,3,4], X) musi postupne "vracet" vsechny podseznamy seznamu [1,2,3,4]). (7b)
+    6 (Premie) V jazyce Goedel napiste predikat na vypocet Fibonacciho cisel.
+
+--------------------------------------------
+------------------- 2010 -------------------
+--------------------------------------------
+
+ŘÁDNÝ
+
+  Haskell
+  -------
+  1) Mame k dispozici map, fold*, filter, zip, ++. Vytvorte datovou strukturu pro reprezentaci Lambda Kalkulu. Vytvorte funkci, ktera zjisti volne promenne a platnou substituci.
+  2) Mame k dispozici holy Haskell. Vytvorte sum::[Int]->Int ktery v pripade prazndeho seznamu vraci 0 jinak s vyuzitim fold* soucet prvku seznamu. Dokazte funkcnost reseni.
+  3) Vytvorte funkci, ktera ma parametry file1 a file2 a na vystup zobrazi radky z prvniho souboru co jsou v druhem v puvodnim poradi
+  
+  Prolog
+  ------
+  1) Vytvorte predikat, ktery ma jako parametry rozmer sachovnice, vychozi misto a cilove misto. Vraci pocet vsech acyklickych cest kone mezi nimi.
+  2) Asociace pameti asociace(id, key, value), kdyz se zada key tak hleda value, kdyz se zada value tak hleda klic a kdyz se zada oboje tak pridava do databaze. (bez pouziti seznamů?)
+  3) Predikat subset(+Set, ?Subset) ktery overi, zda druhy parametr je podmnozina prvniho (seznam).
+
+
+1. OPRAVA
+
+  Funkcionalna cast: 
+    1) V lambda kalkule mame vyrazy TRUE, FALSE, mocnina ( \ f n.f^m n), Succ, Pred, isZero a if/ternarny operator ( ? : ) a 
+      operator pevneho bodu Y. Definujte vyraz gt, ktory zisti, ci je 1. parameter vacsi ako druhy.
+    2) V holom Haskelli (len zoznamy, Bool-y, negacie) definujte funkciu negAll->[Bool]->[Bool] s pomocou map, 
+      ktora neguje zoznam boolovskych hodnot. Dokazte, ze pracuje spravne, not x znacte x' a predpokladajte, ze pracuje spravne. 
+    3) Definujte v Haskelli strukturu pre binarny vyhladavaci strom nad neznamymi datami s klucom v triede Ord. 
+      Imlementujte funkciu, ktora dostane strom ako parameter a vrati ho plne vyvazeny. Pouzijte funkcie v Prelude, okrem sortBy a sort. 
+  
+  Logicka cast:
+    1) Predikat, ktory overi mnozinovy rozdiel parametrov (zoznamy). 
+    2) Mame 2D priestor(rozmery zadane parametrami, myslim). Pohybovat sa mozno uhlopriecne, okrem miest, 
+      kde je splneny predikat Switch, na tychto sa mozno pohybovat aj vodorovne a zvisle. Na miesta, kde je splneny predikat 
+      Barrier, nie je mozne vstupit. Najdite najkratsiu cestu z A do B, ktore su zadane.
+    3) Je dany zoznam predikatov. Overte, ze aspon N znich je splnenych pre zoznam zadanych parametrov. atLeast(+Preds, +Params, +N). 
+    4) Zo zoznamu zoznamov vyberte ten, ktoreho dlzka sa najviac blizi cislu presne v polovici medzi dlzkou najkratsieho 
+      a najdlhsieho zoznamu zo zoznamu na vstupe, pouzite volne funkcie length(+L, ?dlzka) a abs(+cislo, ?abs_hodnota).
+
+2. OPRAVA
+  HASKELL
+    - dukaz funkce zipWith (+) xs xs ze je vysledek roven dvojnasobku xs
+    - lambda + vyvazeni modulu, neco se substituci (vraceni seznamu s prvky ve kterych lze substituce provest), + alpha redukce
+    - prace se soubory, prekopirovani z jednoho souboru do druheho, pricemz pri kopiorvani probehne operace, 
+      ze opakujici znaky v radku se nahradi jen jednim znakem a cislice v radcich se sectou, to se provede se vsema radkama 
+      a na vystup se vytiskne vysledna suma. (mozna to bylo trochu jinak, ale proste nak podobne)
+  PROLOG
+    - predikat pro disjunktni prvky dvou mnozin (+A,+B,?Disjunkce).
+    - operace na databazi pomoci predikatu, bylo dano neco jako osoba(jmeno, prijmeni,RC,...), kdekdo(RC,EC), adresa(Ulice, CP,EV...).. 
+      kde EV = evidentni cislo, RC = rodne cislo, a meli se vytvorit ruzne predikaty (3), uz nevim presne jake, 
+      ale proste dotazy, pri zadani osoby vrati bydliste, pri zadani bydliste vrati osoby co tam bydli...
+    - cesty, zadan orientovany graf, propojeni v grafu odkudkam(O,K). kde O a K sou uzly, zjistit zda se z uzlu U da dostat do smycky v grafu 
+      (i vlastni) - cycle(U), a druhy zjisti zda jsou dva uzly od sebe izolovane, isolated(U1,U2).
+
+
+
+--------------------------------------------
+------------------- 2011 -------------------
+--------------------------------------------
+
+ŘÁDNÝ
+
+  Haskell
+  -------
+    1)
+    2)
+    3)
+    4)
+  Prolog
+  ------
+    1)
+    2)
+    3)
+    4)
+
+1. OPRAVA
+
+  Haskell
+  -------
+    1)
+    2)
+    3)
+    4)
+  Prolog
+  ------
+    1)
+    2)
+    3)
+    4)
+
+2. OPRAVA
+
+  Haskell
+  -------
+    1)
+    2)
+    3)
+    4)
+  Prolog
+  ------
+    1)
+    2)
+    3)
+    4)
+
+
+
+--------------------------------------------
+------------------- 2012 -------------------
+--------------------------------------------
+
+ŘÁDNÝ
+
+  Haskell
+  -------
+    1) Definujte strukturu lambda-kalkulu. Napište funkci, která pro dva lambda-výrazy a proměnnou zjistí, zda je substituce platná. K dispozici máte pouze holý Haskell, fold*, map
+       apod.
+    2) Definujte funkci add (x, y), která sečte x a y. (OT: Kdyby bylo jen toto za 10 bodů, to by se mi líbilo. ) Uvažujte standardně definované funkce map a foldr a zde definovanou
+       funkci sumIt a dokažte, že foldr (+) 0 (map add (x:xys)) = sumIt (x:xys) pro všechna x typu (Int, Int).
+    3) Napište funkci v Haskellu, která otevře tři soubory (2 pro čtení, třetí výstupní). V prvním souboru bude seznam loginů podle zvykostí FITu, v druhém bude nějaký text. Program do
+       třetího souboru zapíše text z druhého souboru tolikrát, kolik je v prvním souboru loginů, zaměňuje každý výskyt řetězce xzzzzz99 za právě zpracovávaný login. Loginy budou ve
+       výstupním souboru ve stejném pořadí jako ve vstupním souboru s loginy.
+    4)
+  Prolog
+  ------
+    1) Napište predikát, který vrátí počet všech acyklických cest po šachovnici zadaných rozměrů (i obdelníkové) s maximálně 3 změnami směru...
+    2) Napište predikát, který prohledá binární strom, a pokud se v něm vyskytuje zadaný podstrom, hodnoty uzlů ve všech místech jeho výskytu nahradí hodnotou NewValue. Pokud se zadaný podstrom ve stromě nevyskytuje, výsledkem bude původní strom.
+    3) Napište predikát, který vrátí seznam všech palindromů délky alespoň 3 vyskytujících se jako podřetězec v řetězci zadaném seznamem.
+    4) Napište jediný predikát, který dělá to, co v Haskellu (\f l -> map f $ concat l).
+  Bonus
+  -----
+    Co jsou to kontinuace a jaké je jejich využití při definici denotační sémantiky jazyka Haskell. Demonstrujte na příkladu.
+
+
+1. OPRAVA
+
+  Haskell
+  -------
+    1) Definovat True a False a pomoci pevneho bodu definovat a^b
+    2) Dukaz foldr (++) [] xs = ccat xs, kde ccat [] = [] a ccat (xs:xss) = xs ++ ccat xss
+    3) Nacist soubor a pro kazdy radek zjistit ktery znak se na nem vyskytuje nejvickrat a nejminkrat a vypsat to na stdout.
+  Prolog
+  ------
+    1) Vypsat vsechny acyklicke cesty po desce z pozice jednoho mista do druheho. Pohybovat se muzem jen rovne nebo zatocit doprava. Vychozim smer muze byt libovolny.
+    2) Urcit jestli A je vlastni podmnozinou B, kde obe mnoziny jsou definovane seznamy. (Mohlo se pouzit max 2 predikatu a 3 pravidel nebo tak neco)
+    3) Udelat scitacku dvou binarnich cisel definovanych ve dvou stejne dlouhych seznamech.
+    4) Vytvorit strukturu reprezentujici Labda vyraz a nadefinovat FreeVars, ktera vrati seznam volnych promennych v seznamu
+
+
+2. OPRAVA
+
+  Haskell
+  -------
+    1) Cisty -\ kalkul, mame iszero a prev a cisla definovana jako ve slajdech a vytvorit neq, ktere bere dve cisla, pokud jsou ruzna vraci True, jinak False. True a False nadefinovat
+       dle libosti, zbytek co bude treba dodefinovat.
+    2) Dukaz foldr (+) 0 xs + foldr (+) 0 ys = foldr (+) 0 (xs ++ ys) a rict, co je mene narocne a proc.
+    3) Nadefinovat strukturu pro osobu = (jmeno, prijmeni,id typu int), nadefinovat data pro BST a nacist osoby ze souboru (readData funkce), ve kterem jsou na kazdem radku ve tvaru
+       prijmeni:jmeno:id a spravne je vlozit do BVS, pricemz osoby se porovnavaji prvne dle prijmeni, pak dle jmena a nakonec dle id. Cisty haskel + par IO funkci. Psat typy funkci.
+  Prolog
+  ------
+    1) Nalezněte nejkratší cestu mezi dvěma body na šachovnici, která může mít i obdélníkové rozměry, s predikátem zakazujícím vstup na pole (obecně)
+    2) Nadefinovat predikáty pro práci s BVS, pokud je zadaný klíč, vyhledává hodnotu, pokud hodnota, vyhledává klíče, pokud hodnota i klíč, predikát uspěje jen pokud je hodnota s
+       klíčem ve stromu.
+    3) V holém Prologu nadefinujte predikát XOR, který spočte symetrický rozdíl dvou množin
+    4) Pomocí 2 klauzulí rozdělte seznam na 2 dle úspěchu předaného predikátu, kdy v prvním seznamu budou prvky, pro které predikát platí, a v druhém ty, pro které neplatí
+
+
+
+--------------------------------------------
+------------------- 2013 -------------------
+--------------------------------------------
+
+ŘÁDNÝ
+
+  Haskell
+  -------
+    1) Lambda kalkul – definovat operátor pevného bodu, pomocí něj POW (umocňování x^y)
+    2) Dukaz – funkce foA f [] = id, foA f x:xs = f x . foA f xs, dokázat že foA f x a = foldr f a x
+    3) Definovat lambda vyraz, funkce která vrací 1 když jsou dva lambda výrazy shodné, 0 když jiné proměné (ne alfa konverze) a -1 když jsou různé
+    4) IO – načíst soubor, očíslovat řádky, zarovnání čísla na 5 doprava
+  Prolog
+  ------
+    1) destroy - ze seznamu zanorenych seznamů udělá jeden seznam
+    2) scitani cisel reprezentovancýh seznamy (např. [9,8] + [1,3] = [1,1,1])
+    3) reprezentace bool. výrazů, vyhodnocení, predikát evalLE(bool,table,result)
+    4) všechny cesty délky 20 – 22, predikát na ziskaní nové pozice danej
+  Bonus
+  -----
+    Godel
