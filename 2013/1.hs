@@ -1,3 +1,4 @@
+import System.IO
 -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 --                                                            %%
 -- 3) Definovat lambda vyraz, funkce která vrací 1 když jsou  %%
@@ -32,3 +33,23 @@ cmpLE _ _ = -1
 --    na 5 doprava                                            %%
 --                                                            %%
 -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+flns :: FilePath -> FilePath -> IO()
+flns fin fout = do
+	hin <- openFile fin ReadMode
+	hout <- openFile fout WriteMode
+	cin <- hGetContents hin
+	hPutStr hout $ unlines $ mknums 1 $ lines cin
+	hClose hout
+	hClose hin
+
+
+mknums :: (Num a, Show a) => a -> [String] -> [String]
+mknums _ [] = []
+mknums n (l:ls) =
+	putn n l : mknums (n+1) ls
+	where
+		putn n l = sx (show n) ++ (' ' : l)
+		sx n =
+			if length n >= 5 then n
+			else reverse $ take 5 $ (reverse n ++ repeat ' ')
