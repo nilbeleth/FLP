@@ -4,10 +4,10 @@
 %%                                                                 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-destrct([], []).
-destrct([[]|X], Y) :- destrct(X,Y),!.
-destrct([[H|T]|X],Y) :- destrct([H|[T|X]],Y),!.
-destrct([H|T],[H|TT]) :- destrct(T,TT).
+destroy([], []).
+destroy([[]|X], Y) :- destroy(X,Y),!.
+destroy([[H|T]|X],Y) :- destroy([H|[T|X]],Y),!.
+destroy([H|T],[H|TT]) :- destroy(T,TT).
 
 
 

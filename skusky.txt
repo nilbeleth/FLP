@@ -145,7 +145,8 @@
   Prolog
   ------
     1) Napište predikát, který vrátí počet všech acyklických cest po šachovnici zadaných rozměrů (i obdelníkové) s maximálně 3 změnami směru...
-    2) Napište predikát, který prohledá binární strom, a pokud se v něm vyskytuje zadaný podstrom, hodnoty uzlů ve všech místech jeho výskytu nahradí hodnotou NewValue. Pokud se zadaný podstrom ve stromě nevyskytuje, výsledkem bude původní strom.
+    2) Napište predikát, který prohledá binární strom, a pokud se v něm vyskytuje zadaný podstrom, hodnoty uzlů ve všech místech jeho výskytu nahradí hodnotou NewValue. Pokud se zadaný
+       podstrom ve stromě nevyskytuje, výsledkem bude původní strom.
     3) Napište predikát, který vrátí seznam všech palindromů délky alespoň 3 vyskytujících se jako podřetězec v řetězci zadaném seznamem.
     4) Napište jediný predikát, který dělá to, co v Haskellu (\f l -> map f $ concat l).
   Bonus
@@ -204,7 +205,7 @@
     1) destroy - ze seznamu zanorenych seznamů udělá jeden seznam
     2) scitani cisel reprezentovancýh seznamy (např. [9,8] + [1,3] = [1,1,1])
     3) reprezentace bool. výrazů, vyhodnocení, predikát evalLE(bool,table,result)
-    4) všechny cesty délky 20 – 22, predikát na ziskaní nové pozice danej
+    4) všechny cesty délky 20 – 22, dany je predikát na ziskaní nové pozice danej
   Bonus
   -----
     Godel
